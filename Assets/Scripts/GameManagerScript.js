@@ -1,7 +1,7 @@
 ﻿#pragma strict
 
-var playerOneScore : int;
-var playerTwoScore : int;
+private var playerOneScore : int;
+private var playerTwoScore : int;
 @SerializeField
 var gameBall : BallScript;
 @SerializeField
@@ -10,10 +10,10 @@ var scoreText: UnityEngine.UI.Text;
 var goalScored : AudioClip;
 @SerializeField
 var endGame : AudioClip;
-var audSource: AudioSource;
+private var audSource: AudioSource;
 @SerializeField
 var endGameScreen : GameObject;
-var camShake : CameraShakeScript;
+private var camShake : CameraShakeScript;
 
    // Use this for initialization
 function StartNewGame()
@@ -27,8 +27,8 @@ function StartNewGame()
 	
 function Start ()
 {
-	audSource = gameObject.GetComponent(typeof(audSource));
-	camShake = gameObject.GetComponent(typeof(camShake));
+    audSource = gameObject.GetComponent(AudioSource);
+    camShake = gameObject.GetComponent(CameraShakeScript);
 	StartNewGame();
 }
 	
@@ -72,7 +72,7 @@ function UpdateScoreText()
     scoreText.text = "Player One " + playerOneScore.ToString() + " - " + playerTwoScore.ToString() + " Player Two";
 }
 
-function PlaySound(soundClip)
+function PlaySound(soundClip : AudioClip)
 {
 	audSource.clip = soundClip;
     audSource.Play();

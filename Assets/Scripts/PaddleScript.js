@@ -3,10 +3,10 @@
 @SerializeField
 var isPlayerTwo : boolean;
 @SerializeField
-var speed : int = 0.2;       // how far the paddle moves per frame
-var myTransform : Transform;    // reference to the object's transform
-var direction : int = 0; // 0 = still, 1= up, -1 = down
-var previousPositionY : int;
+var speed : float = 0.2f;       // how far the paddle moves per frame
+private var myTransform : Transform;    // reference to the object's transform
+private var direction : int = 0; // 0 = still, 1= up, -1 = down
+private var previousPositionY : int;
 // Use this for initialization
 function Start () {
 	myTransform = transform;
@@ -56,7 +56,7 @@ function LateUpdate()
     previousPositionY = myTransform.position.y;
 }
 
-function OnCollisionExit2D(other)
+function OnCollisionExit2D(other : Collision2D)
 {
     //Chequear tipo== Collision2D
     if(typeof(other)!==Collision2D)

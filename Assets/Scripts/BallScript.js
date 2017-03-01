@@ -1,11 +1,11 @@
 ﻿#pragma strict
 
 @SerializeField
-var forceValue : int = 4.5;
-var myBody : Rigidbody2D;
+var forceValue : float = 4.5f;
+private var myBody : Rigidbody2D;
         
 function Start () {
-    this.myBody = gameObject.GetComponent( typeof(myBody) );
+    this.myBody = gameObject.GetComponent( Rigidbody2D );
 }
 
 function Update () {
