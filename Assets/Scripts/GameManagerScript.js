@@ -54,6 +54,9 @@ function GoalScored(playerNumber)
 		GameOver(2);
 
 	UpdateScoreText();
+
+	gameBall.Reset ();
+
 } 
 
 function GameOver(winner)
