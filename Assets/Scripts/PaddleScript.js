@@ -1,7 +1,10 @@
 ﻿#pragma strict
 
 @SerializeField
+var isPlayerOne : boolean;
 var isPlayerTwo : boolean;
+var isPlayerThree : boolean;
+var isPlayerFour : boolean;
 @SerializeField
 var speed : float = 0.2f;       // how far the paddle moves per frame
 private var myTransform : Transform;    // reference to the object's transform
@@ -18,17 +21,31 @@ function FixedUpdate () {
     // first decide if this is player 1 or player 2 so we know what keys to listen for
     if (isPlayerTwo)
     {
-        if (Input.GetKey ("o"))
+        if (Input.GetKey (KeyCode.UpArrow))
             MoveUp ();
-        else if (Input.GetKey ("l"))
+        else if (Input.GetKey (KeyCode.DownArrow))
             MoveDown ();
     }
-    else // if not player 2 it must be player 1
+    else if (isPlayerThree) // if not player 2 it must be player 1
     {
-        if (Input.GetKey ("q"))
+        if (Input.GetKey ("r"))
             MoveUp ();
-        else if (Input.GetKey ("a"))
+        else if (Input.GetKey ("f"))
             MoveDown ();
+    }
+    else if (isPlayerFour) // if not player 2 it must be player 1
+    {
+        if (Input.GetKey("o"))
+            MoveUp();
+        else if (Input.GetKey("l"))
+            MoveDown();
+    }
+    else if (isPlayerOne)
+    {
+        if (Input.GetKey("q"))
+            MoveUp();
+        else if (Input.GetKey("a"))
+            MoveDown();
     }
 
     if (previousPositionY > myTransform.position.y)
